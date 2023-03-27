@@ -20,10 +20,5 @@ We want to create a mathematics primary school platform where students can disco
 
 # ✏️ Prototyping
 
-- Use Case Diagram
-    
-    ![UseCaseDiagram.png](%F0%9F%93%8F%20Mathematics%20E-Learning%20Platform%20ebf0745a138047cd8f2f6a7476d80822/UseCaseDiagram.png)
-    
-- Class Diagram
-    
-    ![ClassDiagram.jpg](%F0%9F%93%8F%20Mathematics%20E-Learning%20Platform%20ebf0745a138047cd8f2f6a7476d80822/ClassDiagram.jpg)
+- Use Case Diagram : [shorturl.at/gwQ89](http://shorturl.at/gwQ89)
+- Class Diagram : [shorturl.at/bjAE3](http://shorturl.at/bjAE3)
