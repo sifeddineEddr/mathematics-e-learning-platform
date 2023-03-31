@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/logo-icon.svg" type="image/x-icon">
+    <title>رياضياتي</title>
+    @vite('resources/css/app.css')
+</head>
+
+<body class="bg-brand-light-ish-brown w-full h-screen">
+    <x-side-bar />
+    <div dir="rtl" class="h-screen abolute left-0 sm:w-[75%] lg:w-[80%] flex items-center justify-around">
+        <x-stats-layout title="الموارد البشرية" />
+        <x-stats-layout title="الموارد الرقمية"/>
+        {{-- <x-stats-layout title="الموارد البشرية" :data="" /> --}}
+        {{-- <x-stats-layout title="الموارد الرقمية" :data="" /> --}}
+    </div>
+</body>
+
+</html>
