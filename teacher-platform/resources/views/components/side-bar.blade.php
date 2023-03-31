@@ -2,27 +2,27 @@
     <img src="/images/logo-icon.svg" alt="logo-icon.svg">
     <ul class="hidden sm:flex sm:flex-col sm:gap-8 lg:gap-16">
         <li class="flex gap-4 items-center justify-end hover:text-brand-red sm:text-xl lg:text-2xl">
-            <a href="{{ url('teachers/dashboard') }}"
+            <a href="{{ url('/dashboard') }}"
                 class="{{ Str::contains(Request::url(), 'dashboard') ? 'active' : '' }}">الرئيسية</a>
             <img src="{{ Str::contains(Request::url(), 'dashboard') ? '/images/dashboard-active.svg' : '/images/dashboard.svg' }}"
                 alt="dashboard-icon">
 
         </li>
         <li class="flex gap-4 items-center justify-end hover:text-brand-red sm:text-xl lg:text-2xl">
-            <a href="{{ url('teachers/students') }}"
+            <a href="{{ url('/students') }}"
                 class="{{ Str::contains(Request::url(), 'projects') ? 'active' : '' }}">تلامذتي</a>
             <img src="{{ Str::contains(Request::url(), 'students') ? '/images/my-students-active.svg' : '/images/my-students.svg' }}"
                 alt="my-students-icon">
         </li>
         <li class="flex gap-4 items-center justify-end hover:text-brand-red sm:text-xl lg:text-2xl">
-            <a href="{{ url('teachers/classes') }}"
+            <a href="{{ url('/classes') }}"
                 class="{{ Str::contains(Request::url(), 'tasks') ? 'active' : '' }}">أقسامي</a>
             <img src="{{ Str::contains(Request::url(), 'classes') ? '/images/my-classes-active.svg' : '/images/my-classes.svg' }}"
                 alt="classes-icon">
 
         </li>
         <li class="flex gap-4 items-center justify-end hover:text-brand-red sm:text-xl lg:text-2xl">
-            <a href="{{ url('teachers/lessons') }}" class="{{ Str::contains(Request::url(), 'settings') ? 'active' : '' }}">فضاء
+            <a href="{{ url('/lessons') }}" class="{{ Str::contains(Request::url(), 'settings') ? 'active' : '' }}">فضاء
                 الدروس</a>
             <img src="{{ Str::contains(Request::url(), 'lessons') ? '/images/lessons-active.svg' : '/images/lessons.svg' }}"
                 alt="lessons-icon">

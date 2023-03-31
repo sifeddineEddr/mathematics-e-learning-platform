@@ -26,5 +26,8 @@ Route::middleware([
     // Route::get('/dashboard', function () {
     //     return view('dashboard');
     // })->name('dashboard');
-    Route::resource('/teacher',TeacherController::class);
+});
+Route::resource('/teacher', TeacherController::class);
+Route::get('/dashboard', function () {
+    return redirect()->action([TeacherController::class, 'index']);
 });
