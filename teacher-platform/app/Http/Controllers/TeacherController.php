@@ -70,4 +70,16 @@ class TeacherController extends Controller
     {
         //
     }
+
+    public function students () {
+        return view('teacher.students');
+    }
+
+    public function classes () {
+        return view('teacher.classes');
+    }
+
+    public function lessons () {
+        return view('teacher.lessons');
+    }
 }
