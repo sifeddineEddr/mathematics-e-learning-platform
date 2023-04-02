@@ -141,6 +141,8 @@
     @vite('resources/css/app.css')
 </head>
 
-<x-side-bar />
+<body>
+    <x-side-bar />
+</body>
 
 </html>

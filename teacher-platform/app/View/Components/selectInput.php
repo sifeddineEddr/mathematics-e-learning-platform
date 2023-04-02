@@ -6,12 +6,12 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class sideBar extends Component
+class selectInput extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(public $label, public $options)
     {
         //
     }
@@ -21,6 +21,6 @@ class sideBar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.side-bar');
+        return view('components.select-input');
     }
 }
