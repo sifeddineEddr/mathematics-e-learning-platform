@@ -15,6 +15,7 @@
             {{-- <x-class-layout /> --}}
         </div>
         <div class="flex justify-around w-[70%]">
+            {{-- <x-button-component :route = "">slot</x-button-component> --}}
         </div>
     </div>
 </body>
