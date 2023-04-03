@@ -143,6 +143,7 @@
 
 <body>
     <x-side-bar />
+    
 </body>
 
 </html>
