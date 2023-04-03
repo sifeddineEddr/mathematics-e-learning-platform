@@ -16,7 +16,7 @@ We want to create a mathematics primary school platform where students can disco
     - TailwindCSS
 - Back-End Technologies:
     - Laravel
-    - Fireship
+    - Firebase
 
 # ✏️ Prototyping
 
