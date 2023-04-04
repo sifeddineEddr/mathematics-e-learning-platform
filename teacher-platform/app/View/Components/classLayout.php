@@ -11,8 +11,11 @@ class classLayout extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $className, public $nbStudents, public $route)
-    {
+    public function __construct(
+        public $className,
+        public $nbStudents,
+        public $route
+    ) {
         //
     }
 
