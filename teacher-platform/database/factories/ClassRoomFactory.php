@@ -19,8 +19,8 @@ class ClassRoomFactory extends Factory
     {
         $teachers = Teacher::pluck('id');
         return [
-            'classroom_name' => fake()->company(1),
-            'classroom_year' => fake()->randomElement(['first year', 'second year', 'third year', 'fourth year', 'fifth year', 'sixth year']),
+            'classroom_year' => fake()->randomElement(['الأول ابتدائي', 'الثاني ابتدائي', 'الثالث ابتدائي', 'الرابع ابتدائي', 'الخامس ابتدائي', 'السادس ابتدائي']),
+            'classroom_name' => fake()->randomElement([1, 2, 3, 4, 5, 6, 7, 8, 9]),
             'teacher_id' => fake()->randomElement($teachers),
         ];
     }
