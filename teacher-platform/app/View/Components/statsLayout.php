@@ -13,7 +13,7 @@ class statsLayout extends Component
      */
     public function __construct(
         public $title,
-        // public $data
+        public $information
     ) {
         //
     }

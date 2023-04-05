@@ -8,9 +8,27 @@ use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
+    public function classroomsData()
+    {
+        $data = ClassRoom::where('teacher_id', 1);
+        return $data;
+    }
+
     public function index()
     {
-        return view('teacher.index');
+        $classroomsData = $this->classroomsData();
+        $studentsCount = 0;
+        $classroomsIds = $classroomsData->get("id");
+        foreach ($classroomsIds as $classroom) {
+            $counter = Student::where('classroom_id', $classroom->id)->count();
+            $studentsCount = $studentsCount + $counter;
+        }
+        return view('teacher.index', [
+            "data" => [
+                'countClassrooms' => 'عدد الأقسام : ' . $classroomsData->count(),
+                'countStudents' => 'عدد التلاميذ : ' . $studentsCount
+            ]
+        ]);
     }
 
     public function students()
@@ -21,7 +39,7 @@ class TeacherController extends Controller
     public function classes()
     {
         return view('teacher.classes', [
-            'pagination' => $this->classroomsData(),
+            'pagination' => $this->classroomsData()->paginate(4),
             'data' => $this->getClassesInformation()
         ]);
     }
@@ -42,7 +60,7 @@ class TeacherController extends Controller
     public function getClassesInformation()
     {
         $params = [];
-        $classrooms = $this->classroomsData();
+        $classrooms = $this->classroomsData()->paginate(4);
         foreach ($classrooms as $value) {
             $nbrStudents = Student::where('classroom_id', $value->id)->count();
 
@@ -50,17 +68,12 @@ class TeacherController extends Controller
                 'id' => $value->id,
                 'classroom_name' => $value->classroom_name,
                 'classroom_year' => $value->classroom_year,
-                'nbrStudents' => $nbrStudents,
+                'countStudents' => $nbrStudents,
             ];
             $params = collect($params);
             // dd(gettype($params));
         }
         return $params;
-    }
-
-    public function classroomsData() {
-        $data = ClassRoom::where('teacher_id', 1)->paginate(4);
-        return $data;
     }
 
     public function getStudentsData()

@@ -86,7 +86,7 @@
         <div class="flex-flex-col">
             <div class="flex flex-wrap items-center justify-around gap-8 py-4">
                 @foreach ($data as $information)
-                    <x-class-layout :classYear="$information['classroom_year']" :className="$information['classroom_name']" :nbStudents="$information['nbrStudents']" :route="$information['id']" />
+                    <x-class-layout :classYear="$information['classroom_year']" :className="$information['classroom_name']" :nbStudents="$information['countStudents']" :route="$information['id']" />
                 @endforeach
             </div>
             <div dir="ltr" class="mx-auto w-[30%]">
