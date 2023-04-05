@@ -7,13 +7,21 @@
     <title>رياضياتي</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+{{-- {{ dd($data) }} --}}
+@foreach ($data as $item)
+    
+{{-- {{ dd($item['classroom_name']) }} --}}
+{{-- {{ dd($data) }} --}}
+@endforeach
 
 <body class="bg-brand-light-ish-brown w-full h-screen">
     <x-side-bar />
     <div dir="rtl"
         class="pb-4 h-screen abolute flex-wrap left-0 sm:w-[75%] lg:w-[80%] flex items-center justify-around gap-8">
         <div class="flex flex-wrap items-center justify-around gap-8">
-            <x-class-layout className="4" nbStudents="4" route />
+            @foreach ($data as $information)
+                <x-class-layout :className="$information['classroom_name']" :nbStudents="$information['nbrStudents']" :route="$information['id']" />
+            @endforeach
         </div>
         <div class="flex justify-around w-[70%]">
             <div>

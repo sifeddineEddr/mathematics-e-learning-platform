@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('classroom_name');
             $table->string('classroom_year');
-            $table->string('login')->unique();
-            $table->string('password');
             $table->foreignId('teacher_id')->onDelete('cascade');
             $table->timestamps();
         });

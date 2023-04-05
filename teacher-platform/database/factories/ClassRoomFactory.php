@@ -22,8 +22,6 @@ class ClassRoomFactory extends Factory
             'classroom_name' => fake()->company(1),
             'classroom_year' => fake()->randomElement(['first year', 'second year', 'third year', 'fourth year', 'fifth year', 'sixth year']),
             'teacher_id' => fake()->randomElement($teachers),
-            'login' => fake()->userName(),
-            'password' => fake()->password(6, 12),
         ];
     }
 }
