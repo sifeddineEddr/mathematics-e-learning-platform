@@ -28,12 +28,7 @@ Route::middleware([
     // })->name('dashboard');
 });
 
-Route::resource('/teacher', TeacherController::class);
-
+Route::get('/dashboard', [TeacherController::class, 'index']);
 Route::get('/students', [TeacherController::class, 'students']);
 Route::get('/classes', [TeacherController::class, 'classes']);
 Route::get('/lessons', [TeacherController::class, 'lessons']);
-
-Route::get('/dashboard', function () {
-    return redirect()->action([TeacherController::class, 'index']);
-});

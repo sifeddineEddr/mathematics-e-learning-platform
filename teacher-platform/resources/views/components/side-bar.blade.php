@@ -3,8 +3,8 @@
     <ul class="hidden sm:flex sm:flex-col sm:gap-8 lg:gap-16">
         <li class="flex gap-4 items-center justify-end hover:text-brand-red sm:text-xl lg:text-2xl">
             <a href="{{ url('/dashboard') }}"
-                class="{{ Str::contains(Request::url(), 'teacher') ? 'text-brand-red' : '' }}">الرئيسية</a>
-            <img src="{{ Str::contains(Request::url(), 'teacher') ? '/images/dashboard-active.svg' : '/images/dashboard.svg' }}"
+                class="{{ Str::contains(Request::url(), 'dashboard') ? 'text-brand-red' : '' }}">الرئيسية</a>
+            <img src="{{ Str::contains(Request::url(), 'dashboard') ? '/images/dashboard-active.svg' : '/images/dashboard.svg' }}"
                 alt="dashboard-icon">
 
         </li>
