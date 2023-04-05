@@ -21,6 +21,7 @@ class TeacherController extends Controller
     public function classes()
     {
         return view('teacher.classes', [
+            'pagination' => $this->classroomsData(),
             'data' => $this->getClassesInformation()
         ]);
     }
@@ -41,18 +42,25 @@ class TeacherController extends Controller
     public function getClassesInformation()
     {
         $params = [];
-        $data = ClassRoom::where('teacher_id', 1)->get();
-        foreach ($data as $value) {
+        $classrooms = $this->classroomsData();
+        foreach ($classrooms as $value) {
             $nbrStudents = Student::where('classroom_id', $value->id)->count();
 
-            $params[count($params)] = collect([
+            $params[count($params)] = [
                 'id' => $value->id,
                 'classroom_name' => $value->classroom_name,
                 'classroom_year' => $value->classroom_year,
                 'nbrStudents' => $nbrStudents,
-            ]);
+            ];
+            $params = collect($params);
+            // dd(gettype($params));
         }
         return $params;
+    }
+
+    public function classroomsData() {
+        $data = ClassRoom::where('teacher_id', 1)->paginate(4);
+        return $data;
     }
 
     public function getStudentsData()

@@ -9,21 +9,16 @@
 </head>
 {{-- {{ dd($data) }} --}}
 @foreach ($data as $item)
-    
-{{-- {{ dd($item['classroom_name']) }} --}}
-{{-- {{ dd($data) }} --}}
+    {{-- {{ dd($item['classroom_name']) }} --}}
+    {{-- {{ dd($data) }} --}}
 @endforeach
 
 <body class="bg-brand-light-ish-brown w-full h-screen">
     <x-side-bar />
     <div dir="rtl"
-        class="pb-4 h-screen abolute flex-wrap left-0 sm:w-[75%] lg:w-[80%] flex items-center justify-around gap-8">
-        <div class="flex flex-wrap items-center justify-around gap-8">
-            @foreach ($data as $information)
-                <x-class-layout :classYear="$information['classroom_year']" :className="$information['classroom_name']" :nbStudents="$information['nbrStudents']" :route="$information['id']" />
-            @endforeach
-        </div>
-        <div class="flex justify-around w-[70%]">
+        class="h-screen abolute flex-wrap left-0 sm:w-[75%] lg:w-[80%] flex items-center justify-around gap-8">
+
+        <div class="mt-8 -mb-8">
             <div>
                 <!-- Modal toggle -->
                 <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
@@ -86,9 +81,17 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
+        </div>
+        <div class="flex-flex-col">
+            <div class="flex flex-wrap items-center justify-around gap-8 py-4">
+                @foreach ($data as $information)
+                    <x-class-layout :classYear="$information['classroom_year']" :className="$information['classroom_name']" :nbStudents="$information['nbrStudents']" :route="$information['id']" />
+                @endforeach
+            </div>
+            <div dir="ltr" class="mx-auto w-[30%]">
+                {{ $pagination->links() }}
+            </div>
         </div>
     </div>
 </body>
