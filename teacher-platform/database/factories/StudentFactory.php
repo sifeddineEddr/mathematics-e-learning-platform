@@ -22,7 +22,7 @@ class StudentFactory extends Factory
             'first_name' => fake()->name(1),
             'last_name' => fake()->name(1),
             'classroom_id' => fake()->randomElement($classrooms),
-            'login' => fake()->userName(),
+            'login' => fake()->unique()->userName(),
             'password' => fake()->password(6, 12),
         ];
     }

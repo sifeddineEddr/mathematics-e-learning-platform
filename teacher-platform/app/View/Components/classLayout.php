@@ -13,6 +13,7 @@ class classLayout extends Component
      */
     public function __construct(
         public $className,
+        public $classYear,
         public $nbStudents,
         public $route
     ) {
