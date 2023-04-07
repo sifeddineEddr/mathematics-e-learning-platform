@@ -7,13 +7,15 @@
     <title>رياضياتي</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-
+{{-- @foreach ($classrooms_names as $item)
+    
+{{dd($item)}}
+@endforeach --}}
 <body class="bg-brand-light-ish-brown w-full h-screen">
     <x-side-bar />
     <div dir="rtl" class="h-screen abolute left-0 flex items-center justify-start flex-col sm:w-[75%] lg:w-[80%]">
         <div class="w-[80%] h-[25%] flex justify-around mt-12">
-            <x-select-input label="اختار المستوى" :options="['1', '2', '3', '4']" />
-            <x-select-input label="اختار القسم" :options="['1', '2', '3', '4']" />
+            <x-select-input label="اختار المستوى" :options="$classrooms_names" />
         </div>
         <div class="w-[90%] relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-gray-500 dark:text-gray-400">

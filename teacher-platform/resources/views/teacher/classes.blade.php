@@ -13,6 +13,7 @@
     {{-- {{ dd($data) }} --}}
 @endforeach
 {{-- {{dd($years)}} --}}
+
 <body class="bg-brand-light-ish-brown w-full h-screen">
     <x-side-bar />
     <div dir="rtl"

@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class TeacherController extends Controller
 {
+    public function getClassRoomsNames() {
+        return ClassRoom::select('classroom_name')->where('teacher_id', 1)->get();
+    }
+
     public function classroomsData()
     {
         $data = ClassRoom::where('teacher_id', 1);
@@ -43,32 +47,24 @@ class TeacherController extends Controller
 
     public function students()
     {
-        return view('teacher.students');
+        $classrooms = [];
+        $data = $this->getClassRoomsNames();
+        
+        foreach ($data as $value) {
+            array_push($classrooms, $value->classroom_name);
+        }
+
+        return view('teacher.students', [
+            'classrooms_names' => $classrooms
+        ]);
     }
 
     public function classes()
     {
-        $years = ClassRoom::select('classroom_name')->where('teacher_id', 1)->get();
-        // $years = DB::table('class_rooms')->select('classroom_name', 'classroom_year')
-        // ->where('teacher_id', 1)
-        // ->get();
-    
-        // $years = ['الأول ابتدائي', 'الثاني ابتدائي', 'الثالث ابتدائي', 'الرابع ابتدائي', 'الخامس ابتدائي', 'السادس ابتدائي'];
-
-        $years = ['الأول ابتدائي', 'الثاني ابتدائي', 'الثالث ابتدائي', 'الرابع ابتدائي', 'الخامس ابتدائي', 'السادس ابتدائي'];
-        $classes = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        $classroomNames = [];
-        foreach ($years as $year) {
-            foreach ($classes as $class) {
-                array_push($classroomNames, "$year - $class");
-            }
-        }
-
-
         return view('teacher.classes', [
             'pagination' => $this->classroomsData()->paginate(4),
             'data' => $this->getClassesInformation(),
-            'years' => $classroomNames
+            'years' => $this->getClassRoomsNames()
         ]);
     }
 

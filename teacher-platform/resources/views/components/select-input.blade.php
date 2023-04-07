@@ -5,7 +5,7 @@
     <select name="select" class="px-20">
         <option value=""></option>
         @foreach ($options as $option)
-            <option value="">{{ $option }}</option>
+            <option value={{ $option }}>{{ $option }}</option>
         @endforeach
     </select>
 </div>
