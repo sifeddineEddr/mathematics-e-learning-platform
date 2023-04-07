@@ -19,15 +19,24 @@ class TeacherController extends Controller
         $classroomsData = $this->classroomsData();
         $studentsCount = 0;
         $classroomsIds = $classroomsData->get("id");
+
+        $countYears = ClassRoom::distinct('classroom_year')->where('teacher_id', 1)->count();
+        $countLesons = 0;
+
         foreach ($classroomsIds as $classroom) {
             $counter = Student::where('classroom_id', $classroom->id)->count();
             $studentsCount = $studentsCount + $counter;
         }
+
         return view('teacher.index', [
-            "data" => [
+            "humanResources" => [
                 'countClassrooms' => 'عدد الأقسام : ' . $classroomsData->count(),
-                'countStudents' => 'عدد التلاميذ : ' . $studentsCount
-            ]
+                'countStudents' => 'عدد التلاميذ : ' . $studentsCount,
+            ],
+            "digitalResources" => [
+                'countYears' => 'المستويات : '  .$countYears,
+                'countLessons' => 'الدروس : '  .$countLesons,
+            ],
         ]);
     }
 

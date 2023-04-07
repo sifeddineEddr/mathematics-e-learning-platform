@@ -12,10 +12,8 @@
 <body class="bg-brand-light-ish-brown w-full h-screen">
     <x-side-bar />
     <div dir="rtl" class="h-screen abolute left-0 sm:w-[75%] lg:w-[80%] flex items-center justify-around">
-        <x-stats-layout title="الموارد البشرية" :information="$data" />
-        {{-- <x-stats-layout title="الموارد الرقمية" :data=""/> --}}
-        {{-- <x-stats-layout title="الموارد البشرية" :data="" /> --}}
-        {{-- <x-stats-layout title="الموارد الرقمية" :data="" /> --}}
+        <x-stats-layout title="الموارد البشرية" :information="$humanResources" />
+        <x-stats-layout title="الموارد الرقمية" :information="$digitalResources"/>
     </div>
 </body>
 
