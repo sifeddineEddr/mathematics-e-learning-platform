@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('class_rooms', function (Blueprint $table) {
             $table->id();
             $table->string('classroom_name');
-            $table->string('classroom_year');
             $table->foreignId('teacher_id')->onDelete('cascade');
             $table->timestamps();
         });

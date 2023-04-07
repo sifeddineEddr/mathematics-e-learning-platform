@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TeacherController extends Controller
 {
@@ -20,7 +21,7 @@ class TeacherController extends Controller
         $studentsCount = 0;
         $classroomsIds = $classroomsData->get("id");
 
-        $countYears = ClassRoom::distinct('classroom_year')->where('teacher_id', 1)->count();
+        $countYears = ClassRoom::select('classroom_name')->where('teacher_id', 1)->count();
         $countLesons = 0;
 
         foreach ($classroomsIds as $classroom) {
@@ -34,8 +35,8 @@ class TeacherController extends Controller
                 'countStudents' => 'عدد التلاميذ : ' . $studentsCount,
             ],
             "digitalResources" => [
-                'countYears' => 'المستويات : '  .$countYears,
-                'countLessons' => 'الدروس : '  .$countLesons,
+                'countYears' => 'المستويات : '  . $countYears,
+                'countLessons' => 'الدروس : '  . $countLesons,
             ],
         ]);
     }
@@ -47,9 +48,27 @@ class TeacherController extends Controller
 
     public function classes()
     {
+        $years = ClassRoom::select('classroom_name')->where('teacher_id', 1)->get();
+        // $years = DB::table('class_rooms')->select('classroom_name', 'classroom_year')
+        // ->where('teacher_id', 1)
+        // ->get();
+    
+        // $years = ['الأول ابتدائي', 'الثاني ابتدائي', 'الثالث ابتدائي', 'الرابع ابتدائي', 'الخامس ابتدائي', 'السادس ابتدائي'];
+
+        $years = ['الأول ابتدائي', 'الثاني ابتدائي', 'الثالث ابتدائي', 'الرابع ابتدائي', 'الخامس ابتدائي', 'السادس ابتدائي'];
+        $classes = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        $classroomNames = [];
+        foreach ($years as $year) {
+            foreach ($classes as $class) {
+                array_push($classroomNames, "$year - $class");
+            }
+        }
+
+
         return view('teacher.classes', [
             'pagination' => $this->classroomsData()->paginate(4),
-            'data' => $this->getClassesInformation()
+            'data' => $this->getClassesInformation(),
+            'years' => $classroomNames
         ]);
     }
 
@@ -76,7 +95,6 @@ class TeacherController extends Controller
             $params[count($params)] = [
                 'id' => $value->id,
                 'classroom_name' => $value->classroom_name,
-                'classroom_year' => $value->classroom_year,
                 'countStudents' => $nbrStudents,
             ];
             $params = collect($params);

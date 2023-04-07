@@ -17,10 +17,18 @@ class ClassRoomFactory extends Factory
      */
     public function definition()
     {
+        $years = ['الأول ابتدائي', 'الثاني ابتدائي', 'الثالث ابتدائي', 'الرابع ابتدائي', 'الخامس ابتدائي', 'السادس ابتدائي'];
+        $classes = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        $classroomNames = [];
+        foreach ($years as $year) {
+            foreach ($classes as $class) {
+                array_push($classroomNames, "$year - $class");
+            }
+        }
+        
         $teachers = Teacher::pluck('id');
         return [
-            'classroom_year' => fake()->randomElement(['الأول ابتدائي', 'الثاني ابتدائي', 'الثالث ابتدائي', 'الرابع ابتدائي', 'الخامس ابتدائي', 'السادس ابتدائي']),
-            'classroom_name' => fake()->randomElement([1, 2, 3, 4, 5, 6, 7, 8, 9]),
+            'classroom_name' => fake()->randomElement($classroomNames),
             'teacher_id' => fake()->randomElement($teachers),
         ];
     }

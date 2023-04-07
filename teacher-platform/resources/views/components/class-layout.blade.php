@@ -4,7 +4,7 @@
         <img src="/images/my-classes-active.svg" alt="class-icon">
         <p class="text-2xl text-brand-red mb-2 text-2xl font-bold tracking-tight">
             {{-- الخامس ابتدائي - 1 --}}
-            {{$classYear}} - {{$className }}
+            {{$className }}
         </p>
     </div>
     <p class="mb-3 font-normal text-2xl text-center">
