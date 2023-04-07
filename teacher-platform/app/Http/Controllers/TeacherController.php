@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class TeacherController extends Controller
 {
-    public function getClassRoomsNames() {
+    public function getClassRoomsNames()
+    {
         return ClassRoom::select('classroom_name')->where('teacher_id', 1)->get();
     }
 
@@ -49,7 +50,7 @@ class TeacherController extends Controller
     {
         $classrooms = [];
         $data = $this->getClassRoomsNames();
-        
+
         foreach ($data as $value) {
             array_push($classrooms, $value->classroom_name);
         }
@@ -61,10 +62,35 @@ class TeacherController extends Controller
 
     public function classes()
     {
+        $years = ['الأول ابتدائي', 'الثاني ابتدائي', 'الثالث ابتدائي', 'الرابع ابتدائي', 'الخامس ابتدائي', 'السادس ابتدائي'];
+        $classes = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        $allClassNames = [];
+        foreach ($years as $year) {
+            foreach ($classes as $class) {
+                array_push($allClassNames, "$year - $class");
+            }
+        }
+
+        $classrooms = $this->getClassRoomsNames();
+        $updateSelectOptions = [];
+        $addSelectOptions = [];
+
+        foreach ($classrooms as $value) {
+            array_push($updateSelectOptions, $value->classroom_name);
+        }
+
+        foreach ($allClassNames as $value) {
+            if (!in_array($value, $updateSelectOptions)) {
+                array_push($addSelectOptions, $value);
+            }
+        }
+
         return view('teacher.classes', [
             'pagination' => $this->classroomsData()->paginate(4),
             'data' => $this->getClassesInformation(),
-            'years' => $this->getClassRoomsNames()
+            'years' => $this->getClassRoomsNames(),
+            'addSelectOptions' => $addSelectOptions,
+            'updateSelectOptions' => $updateSelectOptions,
         ]);
     }
 
