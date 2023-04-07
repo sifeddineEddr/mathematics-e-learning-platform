@@ -47,19 +47,9 @@
                             <h3 class="mb-4 text-xl font-medium text-brand-red text-center">إضافة قسم جديد</h3>
                             <form class="space-y-6" action="#" enctype="multipart/form-data" method="POST">
                                 @csrf
-                                <label for="year"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">المستوى</label>
-                                <select id="year"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected></option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                                <label for="class"
+                                <label for="classroom_name"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">القسم</label>
-                                <select id="class"
+                                <select id="classroom_name"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option selected></option>
                                     <option value="1">1</option>
@@ -67,6 +57,7 @@
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                 </select>
+
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                     for="default_size">المعلومات الخاصة بالقسم</label>
                                 <input
@@ -109,19 +100,9 @@
                             </h3>
                             <form class="space-y-6" action="#" enctype="multipart/form-data" method="POST">
                                 @csrf
-                                <label for="year"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">المستوى</label>
-                                <select id="year"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected></option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                                <label for="class"
+                                <label for="update_classroom_name"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">القسم</label>
-                                <select id="class"
+                                <select id="update_classroom_name"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option selected></option>
                                     <option value="1">1</option>
