@@ -13,6 +13,17 @@ class TeacherController extends Controller
         return ClassRoom::select('classroom_name')->where('teacher_id', 1)->get();
     }
 
+    public function getClassRoomsNamesWithId()
+    {
+        $classrooms = [];
+        $data = $this->classroomsData()->get();
+
+        foreach ($data as $value) {
+            $classrooms[$value['id']] = $value['classroom_name'];
+        }
+        return $classrooms;
+    }
+
     public function classroomsData()
     {
         $data = ClassRoom::where('teacher_id', 1);
@@ -47,14 +58,9 @@ class TeacherController extends Controller
 
     public function students()
     {
-        $classrooms = [];
-        $data = $this->classroomsData()->get();
 
-        foreach ($data as $value) {
-            $classrooms[$value['id']] = $value['classroom_name'];
-        }
         return view('teacher.students', [
-            'classrooms_data' => $classrooms
+            'classrooms_data' => $this->getClassRoomsNamesWithId()
         ]);
     }
 
@@ -69,13 +75,8 @@ class TeacherController extends Controller
             }
         }
 
-        $classrooms = $this->getClassRoomsNames();
-        $updateSelectOptions = [];
+        $updateSelectOptions = $this->getClassRoomsNamesWithId();
         $addSelectOptions = [];
-
-        foreach ($classrooms as $value) {
-            array_push($updateSelectOptions, $value->classroom_name);
-        }
 
         foreach ($allClassNames as $value) {
             if (!in_array($value, $updateSelectOptions)) {
@@ -99,10 +100,18 @@ class TeacherController extends Controller
 
     public function addClass(Request $request)
     {
+        // ClassRoom::create(
+
+        // );
+        // return redirect()->route('teacher.classes');
+        dd($request);
     }
 
-    public function updateClass(Request $request, $id)
+    public function updateClass(Request $request)
     {
+        // ClassRoom::find()->update();
+        // return redirect()->route('teacher.classes');
+        dd($request);
     }
 
     public function getClassesInformation()

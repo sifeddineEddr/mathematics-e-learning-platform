@@ -45,11 +45,11 @@
                         </button>
                         <div class="px-6 py-6 lg:px-8">
                             <h3 class="mb-4 text-xl font-medium text-brand-red text-center">إضافة قسم جديد</h3>
-                            <form class="space-y-6" action="#" enctype="multipart/form-data" method="POST">
+                            <form class="space-y-6" action='/addClass' enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <label for="classroom_name"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">القسم</label>
-                                <select id="classroom_name"
+                                <select name="classroom_name" id="classroom_name"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option selected></option>
                                     @foreach ($addSelectOptions as $item)
@@ -59,9 +59,9 @@
 
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                     for="default_size">المعلومات الخاصة بالقسم</label>
-                                <input
+                                <input dir="ltr"
                                     class="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="default_size" type="file" dir="ltr" accept=".xls,.xlsx">
+                                    id="default_size" name="excel_data" type="file" accept=".xls,.xlsx">
 
                                 <button type="submit"
                                     class="w-full text-white bg-brand-red hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">إضافة</button>
@@ -97,22 +97,23 @@
                             <h3 class="mb-4 text-xl font-medium text-brand-red text-center">
                                 تحديث معلومات قسم
                             </h3>
-                            <form class="space-y-6" action="#" enctype="multipart/form-data" method="POST">
+                            <form class="space-y-6" action='/updateClass' enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <label for="update_classroom_name"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">القسم</label>
-                                <select id="update_classroom_name"
+                                <select id="update_classroom_name" name="classroom_name"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option selected></option>
-                                    @foreach ($updateSelectOptions as $item)
-                                        <option value={{ $item }}>{{ $item }}</option>
+                                    @foreach ($updateSelectOptions as $key => $value)
+                                        <option value={{ $key }}>{{ $value }}</option>
                                     @endforeach
                                 </select>
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                     for="default_size">المعلومات الخاصة بالقسم</label>
                                 <input
                                     class="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="default_size" type="file" dir="ltr" accept=".xls,.xlsx">
+                                    name="excel_data" id="default_size" type="file" dir="ltr"
+                                    accept=".xls,.xlsx">
 
                                 <button type="submit"
                                     class="w-full text-white bg-brand-red hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">تحديث</button>

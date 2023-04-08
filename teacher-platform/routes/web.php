@@ -30,5 +30,7 @@ Route::middleware([
 
 Route::get('/dashboard', [TeacherController::class, 'index']);
 Route::get('/students', [TeacherController::class, 'students'])->name('teacher.students');
-Route::get('/classes', [TeacherController::class, 'classes']);
+Route::get('/classes', [TeacherController::class, 'classes'])->name('teacher.classes');
 Route::get('/lessons', [TeacherController::class, 'lessons']);
+Route::post('/addClass',[TeacherController::class, 'addClass']);
+Route::post('/updateClass',[TeacherController::class, 'updateClass']);
