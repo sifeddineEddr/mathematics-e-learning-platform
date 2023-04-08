@@ -48,14 +48,13 @@ class TeacherController extends Controller
     public function students()
     {
         $classrooms = [];
-        $data = $this->getClassRoomsNames();
+        $data = $this->classroomsData()->get();
 
         foreach ($data as $value) {
-            array_push($classrooms, $value->classroom_name);
+            $classrooms[$value['id']] = $value['classroom_name'];
         }
-
         return view('teacher.students', [
-            'classrooms_names' => $classrooms
+            'classrooms_data' => $classrooms
         ]);
     }
 
