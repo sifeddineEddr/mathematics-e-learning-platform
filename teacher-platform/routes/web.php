@@ -29,6 +29,6 @@ Route::middleware([
 });
 
 Route::get('/dashboard', [TeacherController::class, 'index']);
-Route::get('/students', [TeacherController::class, 'students']);
+Route::get('/students', [TeacherController::class, 'students'])->name('teacher.students');
 Route::get('/classes', [TeacherController::class, 'classes']);
 Route::get('/lessons', [TeacherController::class, 'lessons']);

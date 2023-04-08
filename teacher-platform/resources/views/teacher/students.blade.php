@@ -11,6 +11,7 @@
     
 {{dd($item)}}
 @endforeach --}}
+
 <body class="bg-brand-light-ish-brown w-full h-screen">
     <x-side-bar />
     <div dir="rtl" class="h-screen abolute left-0 flex items-center justify-start flex-col sm:w-[75%] lg:w-[80%]">

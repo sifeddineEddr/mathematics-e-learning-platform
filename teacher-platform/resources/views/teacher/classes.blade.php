@@ -53,7 +53,7 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option selected></option>
                                     @foreach ($addSelectOptions as $item)
-                                        <option value={{$item}}>{{$item}}</option>
+                                        <option value={{ $item }}>{{ $item }}</option>
                                     @endforeach
                                 </select>
 
@@ -105,7 +105,7 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option selected></option>
                                     @foreach ($updateSelectOptions as $item)
-                                        <option value={{$item}}>{{$item}}</option>
+                                        <option value={{ $item }}>{{ $item }}</option>
                                     @endforeach
                                 </select>
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -126,7 +126,7 @@
         <div class="flex-flex-col flex-wrap h-[80%]">
             <div class="flex flex-wrap items-center justify-around gap-8 py-4">
                 @foreach ($data as $information)
-                    <x-class-layout :className="$information['classroom_name']" :nbStudents="$information['countStudents']" :route="$information['id']" />
+                    <x-class-layout :className="$information['classroom_name']" :id="$information['id']" :nbStudents="$information['countStudents']" :route="$information['id']" />
                 @endforeach
             </div>
             <div dir="ltr" class="mx-auto w-[30%]">

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class TeacherController extends Controller
 {
