@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
@@ -100,9 +101,13 @@ class TeacherController extends Controller
 
     public function addClass(Request $request)
     {
-        
+        // dd($request);
+        ClassRoom::create([
+            'classroom_name' => $request->classroom_name,
+            'teacher_id' => 1
+        ]);
 
-        // return redirect()->route('teacher.classes');
+        return redirect()->route('teacher.classes');
     }
 
     public function updateClass(Request $request)
