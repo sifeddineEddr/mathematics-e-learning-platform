@@ -104,7 +104,9 @@ class TeacherController extends Controller
         // dd($request);
         ClassRoom::create([
             'classroom_name' => $request->classroom_name,
-            'teacher_id' => 1
+            'teacher_id' => 1,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         return redirect()->route('teacher.classes');
