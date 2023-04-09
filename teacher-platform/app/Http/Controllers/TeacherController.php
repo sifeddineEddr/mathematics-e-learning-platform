@@ -100,18 +100,20 @@ class TeacherController extends Controller
 
     public function addClass(Request $request)
     {
-        // ClassRoom::create(
+        
 
-        // );
         // return redirect()->route('teacher.classes');
-        dd($request);
     }
 
     public function updateClass(Request $request)
     {
-        // ClassRoom::find()->update();
-        // return redirect()->route('teacher.classes');
-        dd($request);
+        $classRoom = ClassRoom::find($request->classroom_id);
+        $oldStudents = Student::where('classroom_id',$request->classroom_id)->get();
+        foreach ($oldStudents as $value) {
+            $value->delete();
+        } 
+        $classRoom->delete();
+        return redirect()->route('teacher.classes');
     }
 
     public function getClassesInformation()
