@@ -16,7 +16,9 @@
     <x-side-bar />
     <div dir="rtl" class="h-screen abolute left-0 flex items-center justify-start flex-col sm:w-[75%] lg:w-[80%]">
         <div class="w-[80%] h-[25%] flex justify-around mt-12">
-            <x-select-input label="اختار المستوى" :options="$classrooms_data" />
+            <form action="" method="get" id="form">
+                <x-select-input label="اختار المستوى" :options="$classrooms_data" />
+            </form>
         </div>
         <div class="w-[90%] relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-gray-500 dark:text-gray-400">
@@ -65,8 +67,14 @@
                 </tbody>
             </table>
         </div>
-
     </div>
+
+    <script>
+        const dropdown = document.getElementById("select");
+        dropdown.addEventListener("change", function() {
+            document.getElementById("form").submit();
+        });
+    </script>
 </body>
 
 </html>

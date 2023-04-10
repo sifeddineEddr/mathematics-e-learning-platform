@@ -32,6 +32,6 @@
             <img src="{{ Str::contains(Request::url(), 'lessons') ? '/images/lessons-active.svg' : '/images/lessons.svg' }}"
                 alt="lessons-icon">
         </li>
-        
+
     </ul>
 </div>
