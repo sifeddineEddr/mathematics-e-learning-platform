@@ -1,22 +1,53 @@
 import Button from "./components/button";
+import Logo from "./layout/logo";
 
 function App() {
   return (
     <div dir="rtl" className="w-full h-screen bg-brandSoftBrown p-8">
-      <img
-        className="absolute left-1/2 -translate-x-1/2 sm:translate-x-0"
-        src="/images/logo.svg"
-        alt="logo"
-      />
-
-      <div className="mt-8 flex flex-col items-center lg:flex-row-reverse">
-        <img className="sm:w-1/2" src="/images/landing-animation.gif" alt="animation" />
-        <div className="flex flex-col items-center gap-16">
-        <p className="text-gray-600 text-4xl text-center font-bold w-3/4 sm:text-5xl">
-          تعلم الرياضيات بأسلوب حديث ومتميز
-        </p>
-          <Button value="فضاء التلميذ" event={() => alert("hi")} />
-        </div>
+      <Logo />
+      <div className="m-16 pt-12">
+        <h1 className="text-center text-gray-600 text-3xl font-bold mb-20">
+          تسجيل الدخول
+        </h1>
+        <form
+          method="post"
+          // onSubmit={}
+          action="#"
+        >
+          <table className="flex flex-col gap-8 grid place-items-center">
+            <tr className="flex items-center gap-8">
+              <td>
+                <img src="/images/login.svg" alt="login" className="w-3/4" />
+              </td>
+              <td>
+                <input
+                  className="px-8 py-2 rounded rounded-full"
+                  type="text"
+                  name="login"
+                  placeholder="رقم مسار"
+                  value=""
+                />
+              </td>
+            </tr>
+            <tr className="flex items-center gap-8">
+              <td>
+                <img src="/images/pwd.svg" alt="pwd" className="w-3/4" />
+              </td>
+              <td>
+                <input
+                  className="px-8 py-2 rounded rounded-full"
+                  type="password"
+                  name="pwd"
+                  placeholder="الرمز السري"
+                  value=""
+                />
+              </td>
+            </tr>
+          </table>
+          <div className="mt-16 mr-16 grid place-items-center">
+            <Button value="دخول" event={() => console.log("")} />
+          </div>
+        </form>
       </div>
     </div>
   );
