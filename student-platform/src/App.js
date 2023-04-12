@@ -1,11 +1,11 @@
 
 import GoBack from "./layout/goBack";
 import Home from "./pages/home";
-import Lessons from "./pages/lessons";
+import Lesson from "./pages/lesson";
 
 function App() {
   return (
-<Lessons/>
+<Lesson/>
   );
 }
 
