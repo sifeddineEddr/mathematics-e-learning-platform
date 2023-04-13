@@ -21,9 +21,9 @@
             </form>
         </div>
         <div class="w-[90%] relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="w-full text-sm text-gray-500 dark:text-gray-400">
+            <table class="w-full text-sm text-gray-500">
                 <thead
-                    class="text-xs text-center text-gray-500 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    class="text-xs text-center text-gray-500 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             رمز مسار
@@ -44,9 +44,9 @@
                 </thead>
                 <tbody class="text-center text-gray-900">
                     {{-- <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        class="bg-white border-b hover:bg-gray-50">
                         <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
 
                         </th>
                         <td class="px-6 py-4">
@@ -60,7 +60,7 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="#"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">الاطلاع على
+                                class="font-medium text-blue-600 hover:underline">الاطلاع على
                                 التقدم</a>
                         </td>
                     </tr> --}}

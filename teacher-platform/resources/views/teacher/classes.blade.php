@@ -31,9 +31,9 @@
             <div id="add-modal" tabindex="-1" aria-hidden="true"
                 class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                 <div class="relative w-full h-full max-w-md md:h-auto">
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div class="relative bg-white rounded-lg shadow">
                         <button type="button"
-                            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
                             data-modal-hide="add-modal">
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -48,19 +48,19 @@
                             <form class="space-y-6" action='/addClass' enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <label for="classroom_name"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">القسم</label>
+                                    class="block mb-2 text-sm font-medium text-gray-900">القسم</label>
                                 <select name="classroom_name" id="classroom_name"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                     <option selected></option>
                                     @foreach ($addSelectOptions as $item)
                                         <option value='{{ $item }}'>{{ $item }}</option>
                                     @endforeach
                                 </select>
 
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                <label class="block mb-2 text-sm font-medium text-gray-900"
                                     for="default_size">المعلومات الخاصة بالقسم</label>
                                 <input dir="ltr"
-                                    class="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    class="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
                                     id="default_size" name="excel_data" type="file" accept=".xls,.xlsx">
 
                                 <button type="submit"
@@ -81,9 +81,9 @@
             <div id="update-modal" tabindex="-1" aria-hidden="true"
                 class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                 <div class="relative w-full h-full max-w-md md:h-auto">
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div class="relative bg-white rounded-lg shadow">
                         <button type="button"
-                            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
                             data-modal-hide="update-modal">
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -100,18 +100,18 @@
                             <form class="space-y-6" action='/updateClass' enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <label for="update_classroom_name"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">القسم</label>
+                                    class="block mb-2 text-sm font-medium text-gray-900">القسم</label>
                                 <select id="update_classroom_name" name="classroom_id"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                     <option selected></option>
                                     @foreach ($updateSelectOptions as $key => $value)
                                         <option value={{ $key }}>{{ $value }}</option>
                                     @endforeach
                                 </select>
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                <label class="block mb-2 text-sm font-medium text-gray-900"
                                     for="default_size">المعلومات الخاصة بالقسم</label>
                                 <input
-                                    class="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    class="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
                                     name="excel_data" id="default_size" type="file" dir="ltr"
                                     accept=".xls,.xlsx">
 

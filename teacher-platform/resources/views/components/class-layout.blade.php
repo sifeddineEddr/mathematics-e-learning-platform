@@ -14,7 +14,7 @@
     </p>
     {{-- <a href=" ?classroom_id={{ $route }}" href={{ route('teacher.students', "$id") }} --}}
     <a {{-- href=" ?classroom_id={{ $route }}" --}} href="/students?select={{ $id }}"
-        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-brand-red rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-brand-red rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300">
         الاطلاع على المزيد
     </a>
 </div>
