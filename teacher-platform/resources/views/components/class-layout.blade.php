@@ -2,7 +2,7 @@
     class="flex flex-col items-center justify-around border-2 max-w-sm p-6 bg-white rounded-lg shadow border-brand-red h-[200px] w-[350px]">
     <div class="flex gap-4">
         <img src="/images/my-classes-active.svg" alt="class-icon">
-        <p class="text-2xl text-brand-red mb-2 text-2xl font-bold tracking-tight">
+        <p class="text-brand-red mb-2 text-2xl font-bold tracking-tight">
             {{-- الخامس ابتدائي - 1 --}}
             {{ $className }}
         </p>

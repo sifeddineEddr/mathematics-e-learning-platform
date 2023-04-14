@@ -10,9 +10,8 @@ class Student extends Model
 {
     use HasFactory;
 
-    public function classroom () {
+    public function classroom()
+    {
         return $this->belongsTo(ClassRoom::class);
     }
-
-    
 }
