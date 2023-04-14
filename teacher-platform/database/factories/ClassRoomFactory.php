@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,7 +26,7 @@ class ClassRoomFactory extends Factory
             }
         }
         
-        $teachers = Teacher::pluck('id');
+        $teachers = User::pluck('id');
         return [
             'classroom_name' => fake()->randomElement($classroomNames),
             'teacher_id' => fake()->randomElement($teachers),
