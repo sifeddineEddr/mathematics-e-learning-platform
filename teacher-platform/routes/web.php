@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/dashboard');
 });
 
 Route::middleware([
@@ -26,11 +26,13 @@ Route::middleware([
     // Route::get('/dashboard', function () {
     //     return view('dashboard');
     // })->name('dashboard');
-    Route::get('/dashboard', [TeacherController::class, 'index']);
+
+
+
+    Route::get('/dashboard', [TeacherController::class, 'index'])->name('teacher.dashboard');
     Route::get('/students', [TeacherController::class, 'students'])->name('teacher.students');
     Route::get('/classes', [TeacherController::class, 'classes'])->name('teacher.classes');
     Route::get('/lessons', [TeacherController::class, 'lessons']);
-    Route::post('/addClass',[TeacherController::class, 'addClass']);
-    Route::post('/updateClass',[TeacherController::class, 'updateClass']);
+    Route::post('/addClass', [TeacherController::class, 'addClass']);
+    Route::post('/updateClass', [TeacherController::class, 'updateClass']);
 });
-
