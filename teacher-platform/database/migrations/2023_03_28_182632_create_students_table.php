@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->string('massar_code');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('login')->unique();
+            $table->string('login');
             $table->string('password');
             $table->foreignId('classroom_id')->onDelete('cascade');
             $table->rememberToken();

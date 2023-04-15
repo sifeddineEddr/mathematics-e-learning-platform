@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\StudentsImport;
 use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TeacherController extends Controller
 {
@@ -108,18 +110,25 @@ class TeacherController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+        $classRoomId = ClassRoom::where('classroom_name', $request->classroom_name)->get('id');
+        // $request->merge(['classroom_id' => 321]);
+        // $realRequest= request();
+        // $realRequest->merge(['classroom_id' => 321]);
+        // dd($classRoomId);
+        $this->ImportStudentData($request, $classRoomId);
 
         return redirect()->route('teacher.classes');
     }
 
     public function updateClass(Request $request)
     {
-        $classRoom = ClassRoom::find($request->classroom_id);
         $oldStudents = Student::where('classroom_id',$request->classroom_id)->get();
         foreach ($oldStudents as $value) {
             $value->delete();
-        } 
-        $classRoom->delete();
+        }
+        
+        $this->ImportStudentData($request);
+
         return redirect()->route('teacher.classes');
     }
 
@@ -139,6 +148,16 @@ class TeacherController extends Controller
             // dd(gettype($params));
         }
         return $params;
+    }
+
+    public function ImportStudentData($data, $id=null) {
+        $file = $data->file('excel_data');
+        // dd($id);
+        if ($id == null) {
+            $id = $data->classroom_id;
+        }
+        dd($id);
+        Excel::import(new StudentsImport($id->get('id')), $file);
     }
 
     public function getStudentsData()

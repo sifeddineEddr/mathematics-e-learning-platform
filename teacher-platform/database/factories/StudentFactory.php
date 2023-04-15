@@ -19,10 +19,11 @@ class StudentFactory extends Factory
     {
         $classrooms = ClassRoom::pluck('id');
         return [
+            'massar_code' => fake()->text(8),
             'first_name' => fake()->name(1),
             'last_name' => fake()->name(1),
             'classroom_id' => fake()->randomElement($classrooms),
-            'login' => fake()->unique()->userName(),
+            'login' => fake()->userName(),
             'password' => fake()->password(6, 12),
         ];
     }
