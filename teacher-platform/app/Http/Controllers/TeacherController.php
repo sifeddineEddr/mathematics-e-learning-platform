@@ -62,9 +62,11 @@ class TeacherController extends Controller
 
     public function students()
     {
+        // dd(intval(request('select')));
 
         return view('teacher.students', [
-            'classrooms_data' => $this->getClassRoomsNamesWithId()
+            'classrooms_data' => $this->getClassRoomsNamesWithId(),
+            'students' => Student::where('classroom_id', intval(request('select')))->get()
         ]);
     }
 

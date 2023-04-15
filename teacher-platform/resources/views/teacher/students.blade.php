@@ -7,10 +7,7 @@
     <title>رياضياتي</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-{{-- @foreach ($classrooms_names as $item)
-    
-{{dd($item)}}
-@endforeach --}}
+
 
 <body class="bg-brand-light-ish-brown w-full h-screen">
     <x-side-bar />
@@ -22,17 +19,16 @@
         </div>
         <div class="w-[90%] relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-gray-500">
-                <thead
-                    class="text-xs text-center text-gray-500 uppercase bg-gray-50">
+                <thead class="text-xs text-center text-gray-500 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             رمز مسار
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            الاسم الكامل
+                            الاسم الشخصي
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            المستوى
+                            الاسم العائلي
                         </th>
                         <th scope="col" class="px-6 py-3">
                             القسم
@@ -43,27 +39,28 @@
                     </tr>
                 </thead>
                 <tbody class="text-center text-gray-900">
-                    {{-- <tr
-                        class="bg-white border-b hover:bg-gray-50">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-
-                        </th>
-                        <td class="px-6 py-4">
-                            Silver
-                        </td>
-                        <td class="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td class="px-6 py-4">
-                            $2999
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#"
-                                class="font-medium text-blue-600 hover:underline">الاطلاع على
-                                التقدم</a>
-                        </td>
-                    </tr> --}}
+                    @foreach ($students as $student)
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                {{ $student->massar_code }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ $student->first_name }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $student->last_name }}
+                            </td>
+                            <td class="px-6 py-4">
+                                @foreach ($classrooms_data as $item)
+                                    {{ $item }}
+                                @endforeach
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="#" class="font-medium text-brand-red hover:underline">الاطلاع على
+                                    التقدم</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
