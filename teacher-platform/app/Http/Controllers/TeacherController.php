@@ -103,32 +103,45 @@ class TeacherController extends Controller
 
     public function addClass(Request $request)
     {
+
+        $allowedExtensions = ['xls', 'xlsx'];
+        $fileExtension = $request->file('excel_data')->getClientOriginalExtension();
+
+        if (in_array($fileExtension, $allowedExtensions)) {
+            ClassRoom::create([
+                'classroom_name' => $request->classroom_name,
+                'teacher_id' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+            $classRoomId = ClassRoom::where('classroom_name', $request->classroom_name)->get('id');
+            // $request->merge(['classroom_id' => 321]);
+            // $realRequest= request();
+            // $realRequest->merge(['classroom_id' => 321]);
+            // dd($classRoomId);
+            $this->ImportStudentData($request, $classRoomId);
+        }
+
         // dd($request);
-        ClassRoom::create([
-            'classroom_name' => $request->classroom_name,
-            'teacher_id' => 1,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-        $classRoomId = ClassRoom::where('classroom_name', $request->classroom_name)->get('id');
-        // $request->merge(['classroom_id' => 321]);
-        // $realRequest= request();
-        // $realRequest->merge(['classroom_id' => 321]);
-        // dd($classRoomId);
-        $this->ImportStudentData($request, $classRoomId);
+
+
 
         return redirect()->route('teacher.classes');
     }
 
     public function updateClass(Request $request)
     {
-        $oldStudents = Student::where('classroom_id', $request->classroom_id)->get();
-        foreach ($oldStudents as $value) {
-            $value->delete();
+        $allowedExtensions = ['xls', 'xlsx'];
+        $fileExtension = $request->file('excel_data')->getClientOriginalExtension();
+
+        if (in_array($fileExtension, $allowedExtensions)) {
+            $oldStudents = Student::where('classroom_id', $request->classroom_id)->get();
+            foreach ($oldStudents as $value) {
+                $value->delete();
+            }
+
+            $this->ImportStudentData($request);
         }
-
-        $this->ImportStudentData($request);
-
         return redirect()->route('teacher.classes');
     }
 
