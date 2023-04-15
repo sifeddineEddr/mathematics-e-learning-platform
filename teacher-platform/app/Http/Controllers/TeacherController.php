@@ -122,11 +122,11 @@ class TeacherController extends Controller
 
     public function updateClass(Request $request)
     {
-        $oldStudents = Student::where('classroom_id',$request->classroom_id)->get();
+        $oldStudents = Student::where('classroom_id', $request->classroom_id)->get();
         foreach ($oldStudents as $value) {
             $value->delete();
         }
-        
+
         $this->ImportStudentData($request);
 
         return redirect()->route('teacher.classes');
@@ -150,14 +150,21 @@ class TeacherController extends Controller
         return $params;
     }
 
-    public function ImportStudentData($data, $id=null) {
+    public function ImportStudentData($data, $id = null)
+    {
         $file = $data->file('excel_data');
         // dd($id);
         if ($id == null) {
             $id = $data->classroom_id;
+        } else {
+            $id = collect($id)->pluck('id');
+            foreach ($id as $value) {
+                $id = $value;
+            }
+            // dd($id);
         }
-        dd($id);
-        Excel::import(new StudentsImport($id->get('id')), $file);
+        // dd($id);
+        Excel::import(new StudentsImport($id), $file);
     }
 
     public function getStudentsData()
