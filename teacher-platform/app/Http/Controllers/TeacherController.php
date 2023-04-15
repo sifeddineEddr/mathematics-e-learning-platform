@@ -7,13 +7,14 @@ use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TeacherController extends Controller
 {
     public function getClassRoomsNames()
     {
-        return ClassRoom::select('classroom_name')->where('teacher_id', 1)->get();
+        return ClassRoom::select('classroom_name')->where('teacher_id', Auth::user()->id)->get();
     }
 
     public function getClassRoomsNamesWithId()
@@ -29,7 +30,7 @@ class TeacherController extends Controller
 
     public function classroomsData()
     {
-        $data = ClassRoom::where('teacher_id', 1);
+        $data = ClassRoom::where('teacher_id', Auth::user()->id);
         return $data;
     }
 
@@ -39,7 +40,7 @@ class TeacherController extends Controller
         $studentsCount = 0;
         $classroomsIds = $classroomsData->get("id");
 
-        $countYears = ClassRoom::select('classroom_name')->where('teacher_id', 1)->count();
+        $countYears = ClassRoom::select('classroom_name')->where('teacher_id', Auth::user()->id)->count();
         $countLesons = 0;
 
         foreach ($classroomsIds as $classroom) {
@@ -110,7 +111,7 @@ class TeacherController extends Controller
         if (in_array($fileExtension, $allowedExtensions)) {
             ClassRoom::create([
                 'classroom_name' => $request->classroom_name,
-                'teacher_id' => 1,
+                'teacher_id' => Auth::user()->id,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
