@@ -1,7 +1,9 @@
 
 import GoBack from "./layout/goBack";
 import Home from "./pages/home";
-import Lesson from "./pages/lesson";
+import Landing from "./pages/landing";
+import Login from "./pages/login";
+import Lesson from "./pages/lessons";
 
 function App() {
   return (

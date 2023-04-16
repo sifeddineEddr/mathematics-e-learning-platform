@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../components/button';
 import Logo from '../layout/logo';
 
-export function Login () {
+export default function Login () {
     return (
         <div dir="rtl" className="w-full h-screen bg-brandSoftBrown p-8">
           <Logo />
@@ -15,14 +15,14 @@ export function Login () {
               // onSubmit={}
               action="#"
             >
-              <table className="flex flex-col gap-8 grid place-items-center">
+              <table className="flex-col gap-8 grid place-items-center">
                 <tr className="flex items-center gap-8">
                   <td>
                     <img src="/images/login.svg" alt="login" className="w-3/4" />
                   </td>
                   <td>
                     <input
-                      className="px-8 py-2 rounded rounded-full"
+                      className="px-8 py-2 rounded-full"
                       type="text"
                       name="login"
                       placeholder="رقم مسار"
@@ -36,7 +36,7 @@ export function Login () {
                   </td>
                   <td>
                     <input
-                      className="px-8 py-2 rounded rounded-full"
+                      className="px-8 py-2 rounded-full"
                       type="password"
                       name="pwd"
                       placeholder="الرمز السري"
