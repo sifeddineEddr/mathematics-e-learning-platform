@@ -1,13 +1,11 @@
-
-import GoBack from "./layout/goBack";
-import Home from "./pages/home";
-import Landing from "./pages/landing";
-import Login from "./pages/login";
-import Lesson from "./pages/lessons";
+import { BrowserRouter } from "react-router-dom";
+import Routing from "./routes/routing";
 
 function App() {
   return (
-<Lesson/>
+    <BrowserRouter>
+      <Routing />
+    </BrowserRouter>
   );
 }
 
