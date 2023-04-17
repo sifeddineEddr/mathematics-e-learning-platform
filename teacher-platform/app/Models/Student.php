@@ -6,18 +6,21 @@ use App\Models\ClassRoom;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Student extends Model
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Auth\Authenticatable;
+
+class Student extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens;
+
     protected $fillable = [
         'massar_code', 'first_name',
         'last_name',
-        'login',
         'password',
         'classroom_id'
     ];
-    public function classroom()
-    {
-        return $this->belongsTo(ClassRoom::class);
-    }
+    // public function classroom()
+    // {
+    //     return $this->belongsTo(ClassRoom::class);
+    // }
 }
