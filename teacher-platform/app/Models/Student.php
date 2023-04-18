@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use Laravel\Passport\HasApiTokens;
-use Illuminate\Auth\Authenticatable;
 
-class Student extends Authenticatable
+class Student extends Model
 {
     use HasFactory, HasApiTokens;
 
@@ -19,8 +18,9 @@ class Student extends Authenticatable
         'password',
         'classroom_id'
     ];
-    // public function classroom()
-    // {
-    //     return $this->belongsTo(ClassRoom::class);
-    // }
+    
+    public function classroom()
+    {
+        return $this->belongsTo(ClassRoom::class);
+    }
 }
