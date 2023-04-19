@@ -9,21 +9,29 @@ We want to create a mathematics primary school platform where students can disco
 - Student’s platform: React App
 - Teacher’s platform: Laravel App
 
-# 👨‍💻 Technology Stack
+# 👨‍💻 Technology Stack & Packages
 
-- Front-End Technologies:
-    - ReactJS
-    - TailwindCSS
-- Back-End Technologies:
-    - Laravel
-    - Fireship
+| Front-End Technologies | Back-End Technologies |
+| --- | --- |
+| ReactJS | Laravel |
+| Redux Toolkit | Laravel Jetstream |
+| React Router Dom | Laravel Excel |
+| Axios | Laravel Passport |
+| TailwindCSS | MongoDB |
+| Flowbite |  |
 
 # ✏️ Prototyping
 
-- Use Case Diagram : [shorturl.at/gwQ89](http://shorturl.at/gwQ89)
-- Class Diagram : [shorturl.at/bjAE3](http://shorturl.at/bjAE3)
+- Use Case Diagram:
+    
+    ![UseCaseDiagram.svg](%F0%9F%93%8F%20Mathematics%20E-Learning%20Platform%20ebf0745a138047cd8f2f6a7476d80822/UseCaseDiagram.svg)
+    
+- Class Diagram:
+    
+    ![ClassDiagram.jpg](%F0%9F%93%8F%20Mathematics%20E-Learning%20Platform%20ebf0745a138047cd8f2f6a7476d80822/ClassDiagram.jpg)
+    
 
-# ⚠️ Repository Use Requirements
+# 📋 Repository Use Requirements
 
 1. Clone the repository on your local machine.
     
@@ -47,13 +55,68 @@ We want to create a mathematics primary school platform where students can disco
             php artisan key:generate
             ```
             
-        3. Install the app's layout dependencies
+        3. Install the app's layout dependencies and their build
             
             ```php
             npm install
+            npm run build
             ```
             
-        4. Run two simultaneous command line with the following commands
+        4. Configure your **`tailwind.config.js`** file
+            
+            ```jsx
+            /** @type {import('tailwindcss').Config} */
+            module.exports = {
+                content: [
+                    "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
+                    "./vendor/laravel/jetstream/**/*.blade.php",
+                    "./storage/framework/views/*.php",
+                    "./resources/views/**/*.blade.php",
+                    "./node_modules/flowbite/**/*.js",
+                ],
+            
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                        },
+                        colors: {
+                            "brand-red": "#C00005",
+                            "brand-light-ish-brown": "#FAF2EF",
+                        },
+                    },
+                },
+            
+                plugins: [
+                    require("@tailwindcss/forms"),
+                    require("@tailwindcss/typography"),
+                    require("flowbite/plugin"),
+                ],
+            };
+            ```
+            
+        5. Configure your `resources/js/app**.js`** file
+            
+            ```jsx
+            import './bootstrap';
+            
+            import Alpine from 'alpinejs';
+            import focus from '@alpinejs/focus';
+            import 'flowbite';
+            window.Alpine = Alpine;
+            
+            Alpine.plugin(focus);
+            
+            Alpine.start();
+            ```
+            
+        6. Create the database tables
+            
+            ```php
+            php artisan migrate
+            ```
+            
+        7. Run two simultaneous command lines with the following commands
             
             ```php
             npm run dev
