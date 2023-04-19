@@ -58,6 +58,8 @@ Check the `uml-diagrams.mdj` file to explore the Use Case & Class Diagrams
         4. Configure your **`tailwind.config.js`** file
             
             ```jsx
+            const defaultTheme = require("tailwindcss/defaultTheme");
+            
             /** @type {import('tailwindcss').Config} */
             module.exports = {
                 content: [
